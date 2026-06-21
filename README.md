@@ -18,7 +18,7 @@ MODULE_TRICHXUAT
 MODULE_PHANLOAI  (7 filter, chế độ file đơn lẻ)
    ├─ generic_feature_filter.py        →  CSV/Filter_Generic_feature/
    ├─ dos_feature_filter.py            →  CSV/Filter_DoS_feature/
-   │    └─ dos_classifier.py           →  Phân loại DoS chi tiết (SYN/UDP/ICMP/Generic) và xuất cảnh báo
+   │    └─ dos_classifier.py           →  Phân loại DoS chi tiết (SYN/UDP/ICMP) và xuất cảnh báo
    ├─ exploits_feature_filter.py       →  CSV/Filter_Exploits_feature/
    ├─ fuzzers_feature_filter.py        →  CSV/Filter_Fuzzers_feature/
    ├─ analysis_feature_filter.py       →  CSV/Filter_Analysis_feature/
