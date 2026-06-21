@@ -18,6 +18,7 @@ MODULE_TRICHXUAT
 MODULE_PHANLOAI  (7 filter, chế độ file đơn lẻ)
    ├─ generic_feature_filter.py        →  CSV/Filter_Generic_feature/
    ├─ dos_feature_filter.py            →  CSV/Filter_DoS_feature/
+   │    └─ dos_classifier.py           →  Phân loại DoS chi tiết (SYN/UDP/ICMP/Generic) và xuất cảnh báo
    ├─ exploits_feature_filter.py       →  CSV/Filter_Exploits_feature/
    ├─ fuzzers_feature_filter.py        →  CSV/Filter_Fuzzers_feature/
    ├─ analysis_feature_filter.py       →  CSV/Filter_Analysis_feature/
@@ -45,9 +46,10 @@ Python\
 │   │   ├── add_features.py
 │   │   ├── config.py            ← cấu hình đường dẫn + tool WSL
 │   │   └── ...
-│   ├── MODULE_PHANLOAI\         ← 7 filter phân loại
+│   ├── MODULE_PHANLOAI\         ← 7 filter phân loại và engine phân loại
 │   │   ├── generic_feature_filter.py
 │   │   ├── dos_feature_filter.py
+│   │   ├── dos_classifier.py    ← Engine phân loại tập dữ liệu DoS
 │   │   └── ... (5 filter còn lại)
 │   └── MODULE_AUTO\             ← tự động hóa
 │       ├── auto_pipeline.py
@@ -118,6 +120,10 @@ py -3 EaF\MODULE_TRICHXUAT\add_features.py CSV\CSV_Full_feature\synf5k_raw.csv
 
 # Bước 3: chạy 1 filter (hoặc cả thư mục)
 py -3 EaF\MODULE_PHANLOAI\dos_feature_filter.py CSV\CSV_Full_feature\synf5k_dos_features.csv
+
+# Bước 4: chấm điểm rủi ro & phân loại DoS chuyên sâu (chỉ dành cho luồng DoS)
+# Lưu ý: Nếu truyền file CSV thô, dos_classifier.py sẽ tự động chạy dos_feature_filter.py trước.
+py -3 EaF\MODULE_PHANLOAI\dos_classifier.py --csv CSV\CSV_Full_feature\synf5k_dos_features.csv
 ```
 
 ## 📝 Ghi chú
